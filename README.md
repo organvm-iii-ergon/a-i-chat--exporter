@@ -76,7 +76,7 @@ The design philosophy is zero-friction: no accounts, no servers, no cloud depend
 
 ## Technical Architecture
 
-The codebase is a TypeScript application built with Vite and Preact, compiled into a single userscript file (`dist/chatgpt.user.js`) via [vite-plugin-monkey](https://github.com/nicepkg/vite-plugin-monkey). The architecture breaks down into four layers:
+The codebase is a TypeScript application built with Vite and Preact, compiled into a single userscript file (`dist/chatgpt.user.js`) via [vite-plugin-monkey](https://github.com/lisonge/vite-plugin-monkey). The architecture breaks down into four layers:
 
 ### 1. API Layer (`src/api.ts`)
 
@@ -111,7 +111,7 @@ Bulk exports use JSZip to produce compressed archives with deduplication-aware f
 
 The interface is built with Preact (aliased as React) and Radix UI primitives:
 
-- **`Menu.tsx`** — The sidebar injection point. Uses [sentinel-js](https://github.com/nicholasruunu/sentinel-js) to watch for DOM mutations (ChatGPT's SPA navigation) and re-inject the export menu when the sidebar rebuilds. A 300ms interval handles edge cases where sentinel misses reattachments.
+- **`Menu.tsx`** — The sidebar injection point. Uses sentinel-js to watch for DOM mutations (ChatGPT's SPA navigation) and re-inject the export menu when the sidebar rebuilds. A 300ms interval handles edge cases where sentinel misses reattachments.
 - **`ExportDialog.tsx`** — The bulk export modal. Manages a three-source data model (API-fetched conversations, project-scoped conversations, locally uploaded JSON files). Uses a custom `RequestQueue` with 200ms/1600ms rate limiting to avoid hitting ChatGPT API throttles during bulk fetches.
 - **`SettingDialog.tsx`** — Configuration panel for filename format, timestamp display, metadata fields, and language selection.
 - **`SettingContext.tsx`** — React context provider that persists all settings to Tampermonkey's `GM_getValue`/`GM_setValue` storage.
