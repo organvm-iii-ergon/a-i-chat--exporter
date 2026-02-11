@@ -5,6 +5,14 @@
 
 # ChatGPT Exporter
 
+[![CI](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/workflows/ci.yml/badge.svg)](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/workflows/ci.yml)
+[![Coverage](https://img.shields.io/badge/coverage-pending-lightgrey)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/organvm-iii-ergon/a-i-chat--exporter/blob/main/LICENSE)
+[![Organ III](https://img.shields.io/badge/Organ-III%20Ergon-F59E0B)](https://github.com/organvm-iii-ergon)
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
+[![TypeScript](https://img.shields.io/badge/lang-TypeScript-informational)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
+
+
 **A browser userscript that exports your entire ChatGPT conversation history into portable, archival-quality formats — Markdown, HTML, JSON, PNG, and plain text.**
 
 ChatGPT Exporter lives inside ORGAN-III (Ergon), the commerce and product organ of the [organvm system](https://github.com/meta-organvm). Within the eight-organ model, this tool represents a concrete, publicly distributed product: a piece of software that thousands of people install and use daily. It converts ephemeral AI conversations into durable artifacts — a concern that connects directly to ORGAN-I's epistemological interest in how knowledge gets captured and structured, and to ORGAN-IV's orchestration interest in how tools route information across systems.
