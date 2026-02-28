@@ -1,80 +1,48 @@
 # CLAUDE.md — a-i-chat--exporter
 
-**ORGAN III** (Commerce) · `organvm-iii-ergon/a-i-chat--exporter`
-**Status:** ACTIVE · **Branch:** `master`
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## What This Repo Is
+## What This Is
 
-Export and share AI chat conversation history (fork of chatgpt-exporter)
+**@pionxzh/chatgpt-exporter** — browser extension to export ChatGPT and other AI chat conversation history. Supports multiple export formats. Fork of the original chatgpt-exporter, extended to cover additional AI chat interfaces.
 
-## Stack
+**Active branch**: `master` (not `main`).
 
-**Languages:** TypeScript, HTML, CSS
-**Build:** pnpm
-
-## Directory Structure
-
-```
-📁 .github/
-📁 .husky/
-📁 .vscode/
-📁 dist/
-📁 docs/
-    adr
-📁 src/
-    api.ts
-    constants.ts
-    exporter
-    hooks
-    i18n.ts
-    locales
-    main.tsx
-    page.ts
-    style.css
-    styles
-    ... (14 items)
-  .editorconfig
-  .gitignore
-  .npmrc
-  .release-please-manifest.json
-  CHANGELOG.md
-  CONTRIBUTING.md
-  LICENSE
-  README.md
-  README_FR.md
-  README_ID.md
-  README_KR.md
-  README_TR.md
-  eslint.config.js
-  index.html
-  package.json
-  pnpm-lock.yaml
-  release-please-config.json
-  seed.yaml
-  tsconfig.json
-  vite.config.ts
-```
-
-## Key Files
-
-- `README.md` — Project documentation
-- `package.json` — Dependencies and scripts
-- `seed.yaml` — ORGANVM orchestration metadata
-- `src/` — Main source code
-
-## Development
+## Commands
 
 ```bash
-pnpm install    # Install dependencies
-pnpm build      # Build all packages
-pnpm test       # Run tests
-pnpm dev        # Start development server
+pnpm install         # Install dependencies
+pnpm run dev         # Vite dev server (for local testing)
+pnpm run build       # Vite build → dist/ (load unpacked in Chrome)
+pnpm run test        # TypeScript typecheck only (tsc --noEmit) — no test suite
+pnpm run lint        # ESLint
+pnpm run lint:fix    # ESLint with auto-fix
 ```
 
-## ORGANVM Context
+## Architecture
 
-This repository is part of the **ORGANVM** eight-organ creative-institutional system.
-It belongs to **ORGAN III (Commerce)** under the `organvm-iii-ergon` GitHub organization.
+Browser extension built with TypeScript + Vite. Output in `dist/` — load as unpacked extension in `chrome://extensions`.
 
-**Registry:** [`registry-v2.json`](https://github.com/meta-organvm/organvm-corpvs-testamentvm/blob/main/registry-v2.json)
-**Corpus:** [`organvm-corpvs-testamentvm`](https://github.com/meta-organvm/organvm-corpvs-testamentvm)
+**Entry points** (`src/`):
+- `main.tsx` — Content script injected into chat pages
+- `page.ts` — Page-level utilities
+- `api.ts` — API interaction helpers
+- `constants.ts` — Shared constants
+- `i18n.ts` — Internationalization (locales in `src/locales/`)
+- `style.css` / `src/styles/` — Extension styles
+
+**Exporter module** (`src/exporter/`): Format-specific export logic (JSON, Markdown, HTML, etc.)
+
+**Hooks** (`src/hooks/`): React hooks for extension UI components
+
+**Releases**: Managed by `release-please`. Config in `release-please-config.json` / `.release-please-manifest.json`. CHANGELOG auto-generated.
+
+**Git hooks**: Husky (`.husky/`) — runs lint/typecheck pre-commit.
+
+## Notes
+
+- No formal test suite — `npm test` only typechecks
+- Multilingual READMEs: `README_FR.md`, `README_ID.md`, `README_KR.md`, `README_TR.md`
+
+<!-- ORGANVM:AUTO:START -->
+<!-- ORGANVM:AUTO:END -->
