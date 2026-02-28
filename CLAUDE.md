@@ -1,18 +1,80 @@
-<!-- ORGANVM:AUTO:START -->
-## System Context (auto-generated — do not edit)
+# CLAUDE.md — a-i-chat--exporter
 
-**Organ:** ORGAN-III (Commerce) | **Tier:** standard | **Status:** CANDIDATE
-**Org:** `unknown` | **Repo:** `a-i-chat--exporter`
+**ORGAN III** (Commerce) · `organvm-iii-ergon/a-i-chat--exporter`
+**Status:** ACTIVE · **Branch:** `master`
 
-### Edges
-- **Produces** → `unknown`: unknown
-- **Consumes** ← `ORGAN-IV`: unknown
+## What This Repo Is
 
-### Siblings in Commerce
-`classroom-rpg-aetheria`, `gamified-coach-interface`, `trade-perpetual-future`, `fetch-familiar-friends`, `sovereign-ecosystem--real-estate-luxury`, `public-record-data-scrapper`, `search-local--happy-hour`, `multi-camera--livestream--framework`, `universal-mail--automation`, `mirror-mirror`, `the-invisible-ledger`, `enterprise-plugin`, `virgil-training-overlay`, `tab-bookmark-manager`, `.github` ... and 11 more
+Export and share AI chat conversation history (fork of chatgpt-exporter)
 
-### Governance
-- Strictly unidirectional flow: I→II→III. No dependencies on Theory (I).
+## Stack
 
-*Last synced: 2026-02-24T12:41:28Z*
-<!-- ORGANVM:AUTO:END -->
+**Languages:** TypeScript, HTML, CSS
+**Build:** pnpm
+
+## Directory Structure
+
+```
+📁 .github/
+📁 .husky/
+📁 .vscode/
+📁 dist/
+📁 docs/
+    adr
+📁 src/
+    api.ts
+    constants.ts
+    exporter
+    hooks
+    i18n.ts
+    locales
+    main.tsx
+    page.ts
+    style.css
+    styles
+    ... (14 items)
+  .editorconfig
+  .gitignore
+  .npmrc
+  .release-please-manifest.json
+  CHANGELOG.md
+  CONTRIBUTING.md
+  LICENSE
+  README.md
+  README_FR.md
+  README_ID.md
+  README_KR.md
+  README_TR.md
+  eslint.config.js
+  index.html
+  package.json
+  pnpm-lock.yaml
+  release-please-config.json
+  seed.yaml
+  tsconfig.json
+  vite.config.ts
+```
+
+## Key Files
+
+- `README.md` — Project documentation
+- `package.json` — Dependencies and scripts
+- `seed.yaml` — ORGANVM orchestration metadata
+- `src/` — Main source code
+
+## Development
+
+```bash
+pnpm install    # Install dependencies
+pnpm build      # Build all packages
+pnpm test       # Run tests
+pnpm dev        # Start development server
+```
+
+## ORGANVM Context
+
+This repository is part of the **ORGANVM** eight-organ creative-institutional system.
+It belongs to **ORGAN III (Commerce)** under the `organvm-iii-ergon` GitHub organization.
+
+**Registry:** [`registry-v2.json`](https://github.com/meta-organvm/organvm-corpvs-testamentvm/blob/main/registry-v2.json)
+**Corpus:** [`organvm-corpvs-testamentvm`](https://github.com/meta-organvm/organvm-corpvs-testamentvm)
