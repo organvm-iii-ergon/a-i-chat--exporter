@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.30.0](https://github.com/organvm-iii-ergon/a-i-chat--exporter/compare/userscript-v2.29.1...userscript-v2.30.0) (2026-03-04)
+
+
+### Features
+
+* wire ORGAN-VI and ORGAN-VII edges in seed.yaml ([e1ce59a](https://github.com/organvm-iii-ergon/a-i-chat--exporter/commit/e1ce59a5a11a4f1022a63d8f299a3b72ae0f0159))
+
+
+### Bug Fixes
+
+* add contents: write permission for release-please ([b200387](https://github.com/organvm-iii-ergon/a-i-chat--exporter/commit/b20038735ea57b2931da662ca1d1fa994d3eca9d))
+* reduce check and release workflow noise ([2a36bf9](https://github.com/organvm-iii-ergon/a-i-chat--exporter/commit/2a36bf97b7124fba583918e95486812144fc5b02))
+* replace 2 broken external links in README (sentinel-js removed, vite-plugin-monkey updated) ([034b72d](https://github.com/organvm-iii-ergon/a-i-chat--exporter/commit/034b72d2f89f37c65c66f4d2d552b3f19bda06a8))
+
 ## [Unreleased]
 
 ### Added
