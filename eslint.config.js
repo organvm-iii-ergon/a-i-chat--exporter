@@ -1,18 +1,30 @@
-import pionxzh from '@pionxzh/eslint-config'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
 
-export default pionxzh(
-    {
-        typescript: true,
-        react: true,
-        vue: false,
-        yaml: false,
-        ignores: ['*.md', '.release-please-manifest.json'],
+export default tseslint.config(
+  { ignores: ['dist', 'node_modules'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx,js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
     },
-    {
-        rules: {
-            'no-alert': 'off',
-            'ts/ban-types': 'off',
-            'node/prefer-global/process': 'off',
-        },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
     },
-)
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'no-unused-vars': 'warn',
+    },
+  }
+);
