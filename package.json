@@ -63,7 +63,7 @@
     "@types/node": "^20.11.20",
     "@types/unist": "^2.0.10",
     "eslint": "^8.57.0",
-    "husky": "^9.0.11",
+    "husky": "^9.1.7",
     "katex": "^0.16.11",
     "lint-staged": "^15.2.7",
     "react": "^18.3.1",
