@@ -63,9 +63,10 @@ inspectable; the resulting files are produced on the client-side path.
 
 ### Status and authorship disclosure
 
-Maintained by [@4444j99](https://github.com/4444j99) as an ORGAN-III fork of
-[Pionxzh's original project](https://github.com/pionxzh/chatgpt-exporter). Automation and agent
-assistance are disclosed through the commit, review, and workflow history.
+**Authorship class:** Substantially transformed fork. This ORGAN-III transformation is architected
+and directed by one person through a governed, multi-agent production system;
+[Pionxzh's original project](https://github.com/pionxzh/chatgpt-exporter) remains explicitly named.
+Automation and agent assistance are disclosed through the commit, review, and workflow history.
 
 ### Limitations
 
@@ -80,10 +81,18 @@ assistance are disclosed through the commit, review, and workflow history.
 The public source proves five inspectable client-side export paths: Markdown, HTML, JSON, PNG, and
 text. It does not prove commercial traction or long-term compatibility with a changing host.
 
-### Next action
+### Doors
 
-Run `pnpm test`, `pnpm lint`, and `pnpm build`, then inspect the five exporters in
-[`src/exporter/`](./src/exporter/) before relying on a format claim.
+**[Have a problem one of these solves? — Deploy it for your shop](mailto:contact@4444j99.dev?subject=%5Bfront%20door%20%C2%B7%20deploy%5D%20%E2%80%94%20inbound) →**
+
+> Pick the depth that fits. We feed you the output, run it under your brand, build it for your exact world, or become your engine.
+
+**[Hiring someone who ships at this level? — Work with the builder](mailto:contact@4444j99.dev?subject=%5Bfront%20door%20%C2%B7%20hire%5D%20%E2%80%94%20inbound) →**
+
+> Everything here is the portfolio. If you need a senior builder who owns systems end-to-end — data, infra, AI, deploy — this is the evidence.
+
+Before relying on a format claim, run `pnpm test`, `pnpm lint`, and `pnpm build`, then inspect the
+five exporters in [`src/exporter/`](./src/exporter/).
 
 ---
 
