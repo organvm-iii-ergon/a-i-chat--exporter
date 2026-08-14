@@ -5,26 +5,85 @@
 
 # ChatGPT Exporter
 
-[![Check](https://github.com/organvm/a-i-chat--exporter/actions/workflows/check.yml/badge.svg)](https://github.com/organvm/a-i-chat--exporter/actions/workflows/check.yml)
-[![Coverage](https://img.shields.io/badge/coverage-pending-lightgrey)](https://github.com/organvm/a-i-chat--exporter)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/organvm/a-i-chat--exporter/blob/master/LICENSE)
+[![Check](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/workflows/check.yml/badge.svg?branch=master)](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/workflows/check.yml)
+[![Coverage](https://img.shields.io/badge/coverage-pending-lightgrey)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/organvm-iii-ergon/a-i-chat--exporter/blob/master/LICENSE)
 [![Organ III](https://img.shields.io/badge/Organ-III%20Ergon-F59E0B)](https://github.com/organvm)
-[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/organvm/a-i-chat--exporter)
-[![TypeScript](https://img.shields.io/badge/lang-TypeScript-informational)](https://github.com/organvm/a-i-chat--exporter)
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
+[![TypeScript](https://img.shields.io/badge/lang-TypeScript-informational)](https://github.com/organvm-iii-ergon/a-i-chat--exporter)
 
 
 **A browser userscript that exports your entire ChatGPT conversation history into portable, archival-quality formats — Markdown, HTML, JSON, PNG, and plain text.**
 
-> ### Work with the builder
->
-> **The expensive problem this engineering solves:** your organization's most valuable thinking is trapped inside AI chat platforms that ship no real export — ephemeral, unsearchable, un-archivable, impossible to move into your own systems for compliance, search, or model training. Capturing it durably means reverse-engineering an undocumented internal API, linearizing a branching message tree, and rendering it into archival formats — all client-side, with no backend to lean on. That is rare, costly engineering, and it is the whole of this repository.
->
-> **The proof is this codebase:** a TypeScript / Vite / Preact userscript that authenticates against ChatGPT's internal `/backend-api/`, walks the conversation tree node-by-node, and exports five formats (LaTeX-safe Markdown, self-contained HTML, official-schema JSON, full-thread PNG, clipboard text) across nine localized UIs — behind a fail-closed Pro license gate (`PRO_FEATURES` in [`src/ui/SettingContext.tsx`](./src/ui/SettingContext.tsx)), a rate-limited `RequestQueue` ([`src/utils/queue.ts`](./src/utils/queue.ts)), and a provider layer ([`src/providers/`](./src/providers)) already scaffolded for Claude and Gemini.
->
-> [**Deploy this for your org →**](https://github.com/organvm)  
-> *(Technical recruiter or engineering leader? This repository is the proof-of-work behind the senior-to-principal roles I take. [Work with the team that built this →](https://github.com/organvm))*
+ChatGPT Exporter lives inside ORGAN-III (Ergon), the commerce and product organ of the
+[organvm system](https://github.com/meta-organvm). It converts conversations into durable local
+artifacts; this repository makes that implementation inspectable without asserting usage or
+commercial outcomes.
 
-ChatGPT Exporter lives inside ORGAN-III (Ergon), the commerce and product organ of the [organvm system](https://github.com/meta-organvm). Within the eight-organ model, this tool represents a concrete, publicly distributed product: a piece of software that thousands of people install and use daily. It converts ephemeral AI conversations into durable artifacts — a concern that connects directly to ORGAN-I's epistemological interest in how knowledge gets captured and structured, and to ORGAN-IV's orchestration interest in how tools route information across systems.
+## Proof destination
+
+### Problem
+
+Browser conversations are difficult to preserve in portable forms. A useful exporter must recover
+the conversation structure, normalize it, and render it locally while remaining honest about its
+dependence on an evolving, undocumented host interface.
+
+### Status
+
+The inspectable ChatGPT path implements five output formats: Markdown, HTML, JSON, PNG, and text.
+Claude and Gemini providers are scaffolds rather than live extraction implementations. This status
+describes the source, not installs, daily use, or adoption.
+
+### Architecture
+
+The TypeScript, Vite, and Preact userscript reads the current ChatGPT session in the browser,
+normalizes the message tree, and routes it through format-specific exporters. The UI, provider
+adapter, rate-limited request queue, local settings, and output renderers stay separately
+inspectable; the resulting files are produced on the client-side path.
+
+### Decisions and tradeoffs
+
+- A userscript keeps export logic inspectable and local, but inherits DOM and internal-API churn.
+- Format-specific renderers preserve useful structure instead of forcing every output through one
+  lossy representation.
+- API-backed actions fail behind a local authorization gate; PNG capture remains subject to browser
+  canvas limits.
+- Pro feature flags and checkout wiring are implementation surfaces, not evidence of sales or
+  customer use.
+
+### Verification
+
+- [Check](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/workflows/check.yml) is
+  the repository-owned lint and type-check workflow.
+- The [successful exact-base workflow run](https://github.com/organvm-iii-ergon/a-i-chat--exporter/actions/runs/29999319405)
+  is bound to `e3a0b8d9a47183163cd92d18f479fc580eaf314d`.
+- `pnpm test`, `pnpm lint`, and `pnpm build` reproduce the source checks and userscript build.
+- `pnpm run publish:check` checks a candidate public artifact; source or a passing check does not by
+  itself establish a release or deployment.
+
+### Status and authorship disclosure
+
+Maintained by [@4444j99](https://github.com/4444j99) as an ORGAN-III fork of
+[Pionxzh's original project](https://github.com/pionxzh/chatgpt-exporter). Automation and agent
+assistance are disclosed through the commit, review, and workflow history.
+
+### Limitations
+
+- Host markup and undocumented internal APIs can change independently of this repository.
+- PNG output can fail on conversations that exceed browser canvas limits.
+- Provider scaffolds do not establish live Claude or Gemini export support.
+- The repository does not establish installs, daily use, adoption, customers, revenue, rankings,
+  retention, or zero-maintenance operation.
+
+### What this proves
+
+The public source proves five inspectable client-side export paths: Markdown, HTML, JSON, PNG, and
+text. It does not prove commercial traction or long-term compatibility with a changing host.
+
+### Next action
+
+Run `pnpm test`, `pnpm lint`, and `pnpm build`, then inspect the five exporters in
+[`src/exporter/`](./src/exporter/) before relying on a format claim.
 
 ---
 
@@ -32,7 +91,7 @@ ChatGPT Exporter lives inside ORGAN-III (Ergon), the commerce and product organ 
 
 - [Product Overview](#product-overview)
 - [Why This Tool Exists](#why-this-tool-exists)
-- [Pricing and Monetization](#pricing-and-monetization)
+- [Licensing design](#licensing-design)
 - [Technical Architecture](#technical-architecture)
 - [Supported Export Formats](#supported-export-formats)
 - [Usage](#usage)
@@ -80,17 +139,20 @@ The design philosophy is zero-friction: no accounts, no servers, no cloud depend
 
 ---
 
-## Pricing and Monetization
+## Licensing design
 
 ChatGPT Exporter is **free and open-source** at its core. The userscript installs from the owned Pages artifact or GitHub raw, runs entirely in your browser, and never asks for an account. There is no paywall on the everyday workflow: opening a conversation and exporting it to Markdown, HTML, JSON, PNG, or text is — and stays — free.
 
-The project sustains itself through a two-tier model. The free tier covers the individual export workflow that the overwhelming majority of users need. A paid **Pro** tier covers the heavier, batch-oriented workflows guarded by the `bulk-export` and `multi-provider-export` feature flags.
+The source defines a two-tier feature model. The free tier covers individual export; an optional
+**Pro** tier gates heavier workflows through the `bulk-export` and `multi-provider-export` feature
+flags. This describes implemented controls, not purchases, revenue, or uptake.
 
-### Who Pays
+### Intended use cases
 
-The free tier is built for the casual-to-regular user: someone archiving a handful of conversations, saving a notable thread, or grabbing a screenshot to share. They never need Pro.
+The free tier supports archiving a conversation or capturing a screenshot without invoking the
+optional feature flags.
 
-Pro is aimed at people for whom export is part of their job or research, and who feel the limits of one-at-a-time export:
+The optional Pro-gated paths are designed for heavier workflows:
 
 - **Researchers and writers** building corpora out of hundreds of conversations.
 - **Developers and knowledge workers** piping bulk exports into note systems, RAG pipelines, or version control.
@@ -111,11 +173,18 @@ Pro is aimed at people for whom export is part of their job or research, and who
 
 The two Pro capabilities map directly to the feature flags in the codebase (`PRO_FEATURES` in [`src/ui/SettingContext.tsx`](./src/ui/SettingContext.tsx)): `bulk-export` and `multi-provider-export`.
 
-### Plan and Status
+### Implementation status
 
-Checkout is **sovereign**: the **Buy Pro** button opens [MONETA](https://mint.4444j99.dev) — the seller's own Bitcoin licence mint — configured via `MINT_CHECKOUT_URL` at build time. Payment goes straight to the seller (no Stripe/Lemon Squeezy/Ko-fi, no processor in the path). After payment confirms on-chain, the mint returns the signed licence key automatically; you can also paste it into the settings panel. The key is stored locally via Tampermonkey storage and verified **offline** against MONETA's public key (`MINT_PUBLIC_JWK` / `VITE_EXPORTER_PUBLIC_JWK`) — no network call, nothing a third party can revoke.
+The source can configure the **Buy Pro** button to open
+[MONETA](https://mint.4444j99.dev) through `MINT_CHECKOUT_URL`. A returned licence key can be stored
+in Tampermonkey storage and verified offline against `MINT_PUBLIC_JWK` /
+`VITE_EXPORTER_PUBLIC_JWK`.
 
-> **Status — first revenue slice implemented, sovereign rail.** The Pro gate fails closed against an offline MONETA-signed key, captures checkout-return license keys, scrubs license material from the URL, and gates bulk / multi-provider export through `PRO_FEATURES`. Revenue deploys fail closed unless production `MINT_CHECKOUT_URL` + `MINT_PUBLIC_JWK` (or `VITE_EXPORTER_PUBLIC_JWK`) values are wired at build time; public Pages and GreasyFork artifacts must pass `pnpm run publish:check` before release, and the tracked userscript distribution is built against `https://mint.4444j99.dev`; live Claude/Gemini extraction remains foundation-only — see [Architecture: providers](#architecture-providers).
+> **Status — licensing controls implemented, commercial outcomes unclaimed.** The Pro gate fails
+> closed against an offline MONETA-signed key, captures checkout-return licence keys, scrubs licence
+> material from the URL, and gates bulk / multi-provider export through `PRO_FEATURES`. Candidate
+> public artifacts must pass `pnpm run publish:check`; this repository provides no evidence of a
+> purchase, customer, revenue, retention, or live Claude/Gemini extraction.
 
 ### Support / Sponsor
 
@@ -260,7 +329,7 @@ published userscript files:
 |--------|------|
 | Owned install page | [Open the install page](https://chatgpt-exporter-e08.pages.dev/) |
 | Owned userscript artifact | [Install `chatgpt.user.js`](https://chatgpt-exporter-e08.pages.dev/chatgpt.user.js) |
-| GitHub raw userscript | [Install `dist/chatgpt.user.js`](https://raw.githubusercontent.com/organvm/a-i-chat--exporter/master/dist/chatgpt.user.js) |
+| GitHub raw userscript | [Install `dist/chatgpt.user.js`](https://raw.githubusercontent.com/organvm-iii-ergon/a-i-chat--exporter/master/dist/chatgpt.user.js) |
 | GreasyFork sync listing | [Staged packet, not live distribution](./docs/greasyfork-listing.md) |
 
 The userscript metadata in [`vite.config.ts`](./vite.config.ts) matches these
