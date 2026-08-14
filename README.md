@@ -63,10 +63,11 @@ inspectable; the resulting files are produced on the client-side path.
 
 ### Status and authorship disclosure
 
-**Authorship class:** Substantially transformed fork. This ORGAN-III transformation is architected
-and directed by one person through a governed, multi-agent production system;
-[Pionxzh's original project](https://github.com/pionxzh/chatgpt-exporter) remains explicitly named.
-Automation and agent assistance are disclosed through the commit, review, and workflow history.
+**Authorship class:** Substantially transformed fork.
+[Pionxzh's original project](https://github.com/pionxzh/chatgpt-exporter) remains explicitly named;
+the ORGAN-III transformation is governed separately. Architected and directed by one person through
+a governed, multi-agent production system. Automation and agent assistance are disclosed through
+the commit, review, and workflow history.
 
 ### Limitations
 
